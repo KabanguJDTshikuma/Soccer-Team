@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
+</head>
+
+<body>
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    Search a soccer team info.
+                </h1>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    <form method="GET">
+                        <div class="field has-addons">
+                            <div class="control is-expanded">
+                                <input class="input" type="text" name="team_name" placeholder="Team Name">
+                            </div>
+                            <div class="control">
+                                <button type="submit" class="button is-info">
+                                    Search Team
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-2 is-4">
+                    <div class="box">
+                        
+                        <div class="media-left">
+                            <figure class="image is-10x10">
+                                <img src='{{ team_list_dict.icon }}' alt="Image" width="10" height="10">
+                            </figure>
+                        </div>
+                        <br>
+                        <div class="media-content">
+                            <div class="content">
+                                <h3>{{ team_list_dict.name }}</h3>
+                                <p><strong>Competitions:</strong> {{ team_list_dict.competitions }}</p>
+                                <p><strong>Color:</strong> {{ team_list_dict.color }}</p>
+                                <p><strong>Adress:</strong> {{ team_list_dict.address }}</p>
+                                <p><strong>Phone:</strong> {{ team_list_dict.phone }}</p>
+                                <p><strong>Website:</strong> <a href="{{ team_list_dict.website }}">{{ team_list_dict.website }}</a></p>
+                                <p><strong>Studium:</strong> {{ team_list_dict.stadium }}</p>
+                            </div>
+                        </div>
+                                             
+                    </div>
+                </div>
+
+                <div class="column is-offset-0 is-4">
+                    <div class="box">
+                        <div class="media-content">
+                            <div class="content">
+                                <h3>Players</h3>
+                                {% for player in team_list_dict.players %}
+                                <a href="{% url 'playerInfo' %}">{{ player.name }}</a> {{ player.position }}<br>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    </footer>
+</body>
+
+</html>
