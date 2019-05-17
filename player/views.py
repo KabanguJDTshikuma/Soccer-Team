@@ -14,9 +14,7 @@ def index(request):
     for team in url['teams']:
         teams_dict[team['name']] = team['id']
         
-    print(teams_dict)
-    team_name = 'Arsenal'
-
+    
     if 'team_name' in request.GET:
         team_name = request.GET['team_name']
 
